@@ -1,0 +1,20 @@
+{
+  "name": "projeto_notifica_whats",
+  "version": "1.0.0",
+  "description": "projeto para notificar precos pelo whatssap",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "@divinomarciok"
+  },
+  "author": "@divino.souza",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  }
+}
