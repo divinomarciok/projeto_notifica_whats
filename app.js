@@ -4,17 +4,26 @@ const app = express()
 
 
 require('dotenv').config()
-require('./db.js')
+
+const notificaRouters = require ("./routes/notificaRoutes.js")
+
 const port = process.env.PORT || 3000;
 
 function aviso (){
-    console.log("O servidor esta rodando na porta http://localhost:8080")
+    
+    console.log("O servidor esta rodando na porta http://localhost: VERIFICAR A PORTANO ARQUIVO .ENV")
 }
-app.use('/notifica',(req, res) => 
+
+app.use(express.json())
+
+/*app.use('/notifica',(req, res) => 
     res.send('<h1 style="color: blue">CRIANDO UM SERVIDOR COM EXPRESS.JS</h1> inpu')
-);
-async function iniciaServidor(){
-    app.listen(process.env.PORT,aviso)
-}
+);*/
+
+app.use('/notifica',notificaRouters)
+
+app.listen(process.env.PORT,aviso)
+
+
 
 
