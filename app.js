@@ -9,20 +9,25 @@ const notificaRouters = require ("./routes/notificaRoutes.js")
 
 const port = process.env.PORT || 3000;
 
-function aviso (){
-    
-    console.log("O servidor esta rodando na porta http://localhost: VERIFICAR A PORTANO ARQUIVO .ENV")
-}
 
 app.use(express.json())
 
-/*app.use('/notifica',(req, res) => 
-    res.send('<h1 style="color: blue">CRIANDO UM SERVIDOR COM EXPRESS.JS</h1> inpu')
-);*/
+/*app.use('/form',(req, res)=>{
+    res.sendFile("D:\\Divino\\JS\\projeto_notifica_whats\\index.html")
+})*/
+
+
+app.use(express.static('D:\\Divino\\JS\\projeto_notifica_whats'))
+
+
 
 app.use('/notifica',notificaRouters)
 
-app.listen(process.env.PORT,aviso)
+app.listen(port,()=>{
+    console.log('O servidor esta rodando na URL http://localhost:'+port);
+})
+
+
 
 
 
