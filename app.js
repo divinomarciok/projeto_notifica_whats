@@ -14,10 +14,6 @@ const port = process.env.PORT || 3000;
 
 app.use(express.json())
 
-/*app.use('/form',(req, res)=>{
-    res.sendFile("D:\\Divino\\JS\\projeto_notifica_whats\\index.html")
-})*/
-
 
 app.use(express.static(__dirname))
 

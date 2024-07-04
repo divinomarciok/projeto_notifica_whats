@@ -1,26 +1,28 @@
-
-//const { response } = require('express');
-//const uploads = require ('./config/multer')
+let diretorioArquivo;
 
 function enviarArquivo(){
 try {
     const formdata = new FormData();
 
-    formdata.append("file",fileInput.files[0])
+    formdata.append("file",file.files[0])
 
-    const requestOptions ={
+     const requestOptions ={
         method:"POST",
         body: formdata,
         redirect: "follow"
     };
 
-    fetch("http://localhost:4000/notifica/panfleto", requestOptions)
+   fetch("http://localhost:4000/notifica/panfleto", requestOptions)
     .then((response) => response.text())
-    .then((result) => console.log(result))
+    .then((result) => {
+      diretorioArquivo=result;
+      console.log(result);
+    })
     .catch((error) => console.error(error));
+   
 } catch (error) {
     console.log(error)
-}
+ }
 
 }
 
@@ -32,7 +34,7 @@ myHeaders.append("Content-Type", "application/json");
 const raw = JSON.stringify({
   "nome": nome.value,
   "preco": data.value,
-  "descricao": "Descrição do produto"
+  "descricao": diretorioArquivo
 });
 
 const requestOptions = {
@@ -46,4 +48,27 @@ fetch("http://localhost:4000/notifica", requestOptions)
   .then((response) => response.text())
   .then((result) => console.log(result))
   .catch((error) => console.error(error));
+}
+
+function enviarJsoncomDir(){
+
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  const raw = JSON.stringify({
+    "diretorio": file.path
+  })
+
+  const requestOptions ={
+    method: "POST",
+    headers: myHeaders,
+    body: raw,
+    redirect: "follow"
+  }
+
+  fetch("http://localhost:4000/notifica/panfleto",requestOptions)
+  .then((response) => response.text())
+  .then((result) => console.log(result))
+  .catch((error) => console.error(error));
+
 }
