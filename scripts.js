@@ -1,4 +1,5 @@
 let diretorioArquivo;
+let jsonRetorno;
 
 function enviarArquivo(){
 try {
@@ -34,8 +35,7 @@ myHeaders.append("Content-Type", "application/json");
 const raw = JSON.stringify({
   "nome": nome.value,
   "preco": data.value,
-  "descricao": diretorioArquivo
-});
+  "descricao": diretorioArquivoC4VBN});
 
 const requestOptions = {
   method: "POST",
@@ -70,5 +70,35 @@ function enviarJsoncomDir(){
   .then((response) => response.text())
   .then((result) => console.log(result))
   .catch((error) => console.error(error));
+
+}
+
+function geraJson(){
+  try {
+
+    const myHeaders = new Headers()
+    myHeaders.append("Content-Type", "application/json")
+    
+  
+    const requestOptions ={
+      method:"POST",
+      headers: myHeaders,
+      body:"",
+      redirect: "follow"  
+    }
+  
+    fetch("http://localhost:4000/notifica/criaJson", requestOptions)
+    .then((response) => response.text())
+    .then((result) => {
+      jsonRetorno = result;
+      console.log(result)
+    })
+    .catch((error => console.error(error)))
+    
+    return jsonRetorno;
+    
+  } catch (error) {
+    console.log(error)
+  }
 
 }

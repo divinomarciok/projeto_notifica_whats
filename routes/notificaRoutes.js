@@ -10,7 +10,9 @@ router.post('/',notificaControl.adiciona);
 
 router.post('/panfleto',upload.single('file'),notificaControl.adicionaDir)
 
+router.post('/criaJson',notificaControl.cria)
 
 
 
-module.exports=router;
+
+module.exports=router;  

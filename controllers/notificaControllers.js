@@ -1,4 +1,5 @@
 const {client} = require('../db.js')
+const {run} = require ('../gemini/request.js')
 
 exports.adiciona = async (req,res) =>{
                 
@@ -37,6 +38,7 @@ exports.adicionaDir = async(req,res) =>{
 }
 
  exports.cria = async (req,res) =>{
-
+    let arquivo = await run()
+    res.send(arquivo)
  }
     

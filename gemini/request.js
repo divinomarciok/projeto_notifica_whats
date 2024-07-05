@@ -49,8 +49,8 @@ const {
     // TODO Make these files available on the local file system
     // You may need to update the file paths
     const files = [
-      await uploadToGemini("bonzaoSuper.jpg", "image/jpeg"),
-      await uploadToGemini("teste1.jpg", "image/jpeg"),
+      await uploadToGemini("gemini/bonzaoSuper.jpg", "image/jpeg"),
+      await uploadToGemini("gemini/teste1.jpg", "image/jpeg"),
     ];
   
     const parts = [
@@ -78,7 +78,14 @@ const {
    // safetySettings: Adjust safety settings
    // See https://ai.google.dev/gemini-api/docs/safety-settings
     });
-    console.log(result.response.text());
+    //console.log(result.response.text());
+    let retorno;
+
+    return retorno = result.response.text();
   }
   
-  run();
+  //run();
+
+  module.exports={
+    run
+  }
