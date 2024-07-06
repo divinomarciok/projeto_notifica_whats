@@ -14,5 +14,4 @@ router.post('/criaJson',notificaControl.cria)
 
 
 
-
 module.exports=router;  

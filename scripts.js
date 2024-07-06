@@ -50,6 +50,33 @@ fetch("http://localhost:4000/notifica", requestOptions)
   .catch((error) => console.error(error));
 }
 
+
+ function GeraEnviaJson(){
+
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+  
+  /*const raw = JSON.stringify({
+    "nome": nome.value,
+    "preco": data.value,
+    "descricao": diretorioArquivoC4VBN});
+  */
+
+  
+ 
+  const requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: raw,
+    redirect: "follow"
+  };
+  
+  fetch("http://localhost:4000/notifica", requestOptions)
+    .then((response) => response.text())
+    .then((result) => console.log(result))
+    .catch((error) => console.error(error));
+  }
+
 function enviarJsoncomDir(){
 
   const myHeaders = new Headers();
