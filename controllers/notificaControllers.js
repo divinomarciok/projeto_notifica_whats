@@ -40,5 +40,6 @@ exports.adicionaDir = async(req,res) =>{
  exports.cria = async (req,res) =>{
     let arquivo = await run()
     res.send(arquivo)
+    return arquivo;
  }
     

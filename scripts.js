@@ -35,7 +35,7 @@ myHeaders.append("Content-Type", "application/json");
 const raw = JSON.stringify({
   "nome": nome.value,
   "preco": data.value,
-  "descricao": diretorioArquivoC4VBN});
+  "descricao": "diretorio arquivo"});
 
 const requestOptions = {
   method: "POST",
@@ -50,20 +50,34 @@ fetch("http://localhost:4000/notifica", requestOptions)
   .catch((error) => console.error(error));
 }
 
+async function buscadados(){
+ 
 
- function GeraEnviaJson(){
+    const requestOptions = {
+      method: "POST",
+      redirect: "follow"
+    };
+
+   return fetch('http://localhost:4000/notifica/criaJson', requestOptions)
+   .then(response => response.json())
+   .then(data => {
+    return data;
+    console.log(data); 
+  })
+  .catch(error => {
+    console.error('Erro ao buscar dados:', error);
+  });
+
+
+}
+ async function GeraEnviaJson(){
 
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
   
-  /*const raw = JSON.stringify({
-    "nome": nome.value,
-    "preco": data.value,
-    "descricao": diretorioArquivoC4VBN});
-  */
-
-  
+  const raw  = JSON.stringify (await buscadados())
  
+  console.log(raw)
   const requestOptions = {
     method: "POST",
     headers: myHeaders,
