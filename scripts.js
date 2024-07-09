@@ -1,7 +1,7 @@
 let diretorioArquivo;
 let jsonRetorno;
 
-function enviarArquivo(){
+async function enviarArquivo(){
 try {
     const formdata = new FormData();
 
@@ -13,11 +13,10 @@ try {
         redirect: "follow"
     };
 
-   fetch("http://localhost:4000/notifica/panfleto", requestOptions)
+   return fetch("http://localhost:4000/notifica/panfleto", requestOptions)
     .then((response) => response.text())
     .then((result) => {
-      diretorioArquivo=result;
-      console.log(result);
+      return result;      
     })
     .catch((error) => console.error(error));
    
@@ -30,6 +29,7 @@ try {
 function enviarJson(){
 
 const myHeaders = new Headers();
+
 myHeaders.append("Content-Type", "application/json");
 
 const raw = JSON.stringify({
@@ -50,19 +50,30 @@ fetch("http://localhost:4000/notifica", requestOptions)
   .catch((error) => console.error(error));
 }
 
-async function buscadados(){
- 
+async function geraJsonPanfleto (){ 
+
+  const myHeaders = new Headers();
+
+  myHeaders.append("Content-Type", "application/json");
+
+  diretorio = await enviarArquivo()
+
+  const raw = JSON.stringify({
+    "diretorio": diretorio
+  });
 
     const requestOptions = {
-      method: "POST",
+      method: "POST",  
+      headers: myHeaders, 
+      body: raw,
       redirect: "follow"
     };
 
    return fetch('http://localhost:4000/notifica/criaJson', requestOptions)
    .then(response => response.json())
    .then(data => {
-    return data;
-    console.log(data); 
+    return data;  
+    //console.log(data); 
   })
   .catch(error => {
     console.error('Erro ao buscar dados:', error);
@@ -75,7 +86,7 @@ async function buscadados(){
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
   
-  const raw  = JSON.stringify (await buscadados())
+  const raw  = JSON.stringify (await geraJsonPanfleto())
  
   console.log(raw)
   const requestOptions = {
@@ -91,7 +102,7 @@ async function buscadados(){
     .catch((error) => console.error(error));
   }
 
-function enviarJsoncomDir(){
+/*function enviarJsoncomDir(){
 
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
@@ -112,9 +123,9 @@ function enviarJsoncomDir(){
   .then((result) => console.log(result))
   .catch((error) => console.error(error));
 
-}
+}*/
 
-function geraJson(){
+/*function geraJson(){
   try {
 
     const myHeaders = new Headers()
@@ -142,4 +153,4 @@ function geraJson(){
     console.log(error)
   }
 
-}
+}*/

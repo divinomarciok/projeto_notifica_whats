@@ -21,14 +21,14 @@ exports.adiciona = async (req,res) =>{
  },
 
 
-exports.adicionaDir = async(req,res) =>{
+exports.uploadImg = async(req,res) =>{
     try{
-       const db = client.db('notificaPromo');
-       const collection = db.collection('dadosSupermecado')
+       //const db = client.db('notificaPromo');
+      //const collection = db.collection('dadosSupermecado')
 
        const file = req.file.path
 
-       const result = await collection.insertOne(req.body)
+       //const result = await collection.insertOne(req.body)
 
 
        return res.send(file)
@@ -38,7 +38,14 @@ exports.adicionaDir = async(req,res) =>{
 }
 
  exports.cria = async (req,res) =>{
-    let arquivo = await run()
+
+    jsonRetorno =  req.body;
+
+    diretorio = jsonRetorno.diretorio;
+
+    console.log(diretorio)   
+    let arquivo = await run(diretorio)
+    
     res.send(arquivo)
     return arquivo;
  }

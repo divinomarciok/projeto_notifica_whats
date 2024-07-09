@@ -45,12 +45,12 @@ const {
     responseMimeType: "text/plain",
   };
   
-  async function run() {
+  async function run(nomeArq) {
     // TODO Make these files available on the local file system
     // You may need to update the file paths
     const files = [
       await uploadToGemini("gemini/bonzaoSuper.jpg", "image/jpeg"),
-      await uploadToGemini("gemini/teste1.jpg", "image/jpeg"),
+      await uploadToGemini(nomeArq, "image/jpeg"),
     ];
   
     const parts = [
