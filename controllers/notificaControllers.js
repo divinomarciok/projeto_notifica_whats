@@ -26,12 +26,17 @@ exports.consulta = async(req,res) =>{
         const db = client.db('notificaPromo');
         const collection = db.collection('dadosSupermecado');
 
-        const query = { produtos: { $elemMatch: { marca: "Seara" } } };
+        const query = { produtos: { $elemMatch: { marca: "Dona Cota" } } };
         const result = await collection.find(query).toArray();
         
+        for(let i=0; i< result.length;i++){
+            const objeto = result[i]
 
+            console.log(objeto._id)
+        }
 
          res.status(200).json({json:result})
+         console.log("deu certo")
     
     } catch(error){
         res.status(500).json({error: " deu ruim"})  
