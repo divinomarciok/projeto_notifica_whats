@@ -1,15 +1,14 @@
-let diretorioArquivo;
-let jsonRetorno;
-
 async function enviarArquivo(){
 try {
     const formdata = new FormData();
+
+    //atribui o valor do input file, ao atributo "file" do formdata
 
     formdata.append("file",file.files[0])
 
      const requestOptions ={
         method:"POST",
-        body: formdata,
+        body: formdata, // atributo file enviado para rota 
         redirect: "follow"
     };
 
@@ -26,6 +25,7 @@ try {
 
 }
 
+//função monta um JSON a partir dos dados fornecidos no formulario do HTML identifica pelo id.
 function enviarJson(){
 
 const myHeaders = new Headers();
@@ -49,6 +49,9 @@ fetch("http://localhost:4000/notifica", requestOptions)
   .then((result) => console.log(result))
   .catch((error) => console.error(error));
 }
+
+
+// função assincrona que utiliza de outras duas funções 
 
 async function geraJsonPanfleto (){ 
 
@@ -89,6 +92,7 @@ async function geraJsonPanfleto (){
   const raw  = JSON.stringify (await geraJsonPanfleto())
  
   console.log(raw)
+
   const requestOptions = {
     method: "POST",
     headers: myHeaders,
