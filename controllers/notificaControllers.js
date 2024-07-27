@@ -26,7 +26,13 @@ exports.consulta = async(req,res) =>{
         const db = client.db('notificaPromo');
         const collection = db.collection('dadosSupermecado');
 
-        const query = { produtos: { $elemMatch: { marca: "Dona Cota" } } };
+        const body = req.body;
+
+        let produtoFiltrado = body.filtro;
+
+        console.log(produtoFiltrado)
+
+        const query = { produtos: { $elemMatch: { marca: produtoFiltrado } } };
         const result = await collection.find(query).toArray();
         
         for(let i=0; i< result.length;i++){
@@ -34,12 +40,12 @@ exports.consulta = async(req,res) =>{
 
             console.log(objeto._id)
         }
-
+        console.log(result)
          res.status(200).json({json:result})
-         console.log("deu certo")
+         //console.log("deu certo")
     
     } catch(error){
-        res.status(500).json({error: " deu ruim"})  
+        res.status(500).json({error: " API deu ruim"})  
     }
     
 },
