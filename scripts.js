@@ -1,3 +1,6 @@
+const json_produtos = [];
+
+
 async function enviarArquivo(){
 try {
     const formdata = new FormData();
@@ -26,6 +29,25 @@ try {
 }
 
 //função monta um JSON a partir dos dados fornecidos no formulario do HTML identifica pelo id.
+
+
+function criaJsonT() {
+
+      const produtosTabacaria ={
+      Nome: nome.value,
+      Valor: valor.value,
+      Marca: marca.value,
+      Tamanho: tamanho.value,
+      Data: data.value
+      }
+     
+      json_produtos.push(produtosTabacaria);
+
+}
+
+function mostraProdutos(){
+  console.log(JSON.stringify(json_produtos));
+}
 function enviarJson(){
 
 const myHeaders = new Headers();
@@ -105,6 +127,8 @@ async function geraJsonPanfleto (){
     .then((result) => console.log(result))
     .catch((error) => console.error(error));
   }
+
+
 
 /*function enviarJsoncomDir(){
 

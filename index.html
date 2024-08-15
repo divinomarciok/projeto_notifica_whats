@@ -10,13 +10,16 @@
     <script src="scripts.js"></script>
     <textarea name="json" id="jsonfile" cols="30" rows="10"></textarea><br>
 
-    <input type="text" name="nome" id="nome"><br>
-    <input type="text" name="dataNasc" id="data"><br>
-    <input type="file" name="file" id="file"><br>
+    <input type="text" placeholder="nome" name="nome" id="nome"><br>
+    <input type="text" placeholder="data nascimento" name="dataNasc" id="data"><br>
+    <input type="file" placeholder="arquivo" name="file" id="file"><br>
+
     <!-- BOTAO que pega os dados do formulario e monta um json para ser enviado-->
     <button onclick="enviarJson()">Enviar JSON</button><br>
+
     <!-- BOTAO que pega o path, do input tipo file e envia para API -->
     <button onclick="enviarArquivo()">Enviar Arquivo</button><br>
+    
     <!-- chama a função para gerar e enviar o json-->
     <button onclick="GeraEnviaJson()">GeraEnviaJson</button><br>
 </div>

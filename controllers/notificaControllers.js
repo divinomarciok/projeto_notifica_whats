@@ -69,6 +69,7 @@ exports.uploadImg = async(req,res) =>{
     diretorio = jsonRetorno.diretorio;
 
     console.log(diretorio)   
+    
     let arquivo = await run(diretorio)
 
     res.send(arquivo)
