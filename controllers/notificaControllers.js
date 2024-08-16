@@ -28,6 +28,7 @@ exports.consulta = async(req,res) =>{
 
         const body = req.body;
 
+        
         let produtoFiltrado = body.filtro;
 
         console.log(produtoFiltrado)

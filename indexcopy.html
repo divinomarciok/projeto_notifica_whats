@@ -3,28 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>notificaWhats</title>
+    <title>cria json tabacaria</title>
 </head>
 <body>
-<div>
     <script src="scripts.js"></script>
+    <div>
+        <input type="text" placeholder="nome empresa" name="Nome da Empresa" id="nomeEmpresa">
+        <input type="text" placeholder="data cadastro" name="Data Cadastro" id="dataCadastro"><br><br>
+    </div>
+<div id="form">
+   
    <!-- <textarea name="json" id="jsonfile" cols="30" rows="10"></textarea><br> -->
 
-    <input type="text" placeholder="nome" name="nome" id="nome"><br>
-    
-    <input type="text" placeholder="Data" name="data" id="data"><br>
+    <input type="text" placeholder="nome produto" name="nome" id="nome"><br>   
 
-    <input type="text" placeholder="valor" name="valor" id="valor"><br>
+    <input type="text" placeholder="valor produto" name="valor" id="valor"><br>
 
-    <input type="text" placeholder="marca" name="marca" id="marca"><br>
+    <input type="text" placeholder="marca produto" name="marca" id="marca"><br>
 
-    <input type="text" placeholder="tamanho" name="tamanho" id="tamanho"><br>
+    <input type="text" placeholder="categoria produto" name="categoria" id="categoria"><br>
+
+    <input type="text" placeholder="tamanho produto" name="tamanho" id="tamanho"><br>    <br>
 
 
     <!-- <input type="file" placeholder="arquivo" name="file" id="file"><br> -->
 
-    <button onclick="criaJsonT()">Monta JSON</button><br>
-    <button onclick="mostraProdutos()">Mostra JSON</button><br>
+    <button onclick="criaJsonT()">Monta JSON</button>
+
+    <button onclick="mostraProdutos()">Mostra JSON</button><br><br>
+
+    <button onclick="enviarJsonCriado()">Enviar JSON</button><br>
+    <button onclick="">Gera JSON Aleatorio</button>
+
     
 </div>
 </body>

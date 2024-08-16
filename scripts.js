@@ -1,5 +1,6 @@
-const json_produtos = [];
 
+
+const json_produtos = [];
 
 async function enviarArquivo(){
 try {
@@ -37,17 +38,56 @@ function criaJsonT() {
       Nome: nome.value,
       Valor: valor.value,
       Marca: marca.value,
-      Tamanho: tamanho.value,
-      Data: data.value
+      Categoria: categoria.value,
+      Tamanho: tamanho.value
+      //Data: data.value
       }
      
-      json_produtos.push(produtosTabacaria);
+      json_produtos.push(produtosTabacaria);  
+
+      limpaCampos()
+}
+
+
+    function limpaCampos(){
+      document.getElementById('nome').value='';
+      document.getElementById('valor').value='';
+      document.getElementById('marca').value='';
+      document.getElementById('categoria').value='';
+      document.getElementById('tamanho').value='';
+    }
+
+function formataJson(){
+
+  //transformaEmjson = JSON.stringify(json_produtos);
+
+    const jsonformat = {
+      json: 
+          {
+              //_id:"Sem id ainda",
+              empresa: nomeEmpresa.value,
+              data: dataCadastro.value,            
+              produtos: [
+        
+                json_produtos
+           
+              ]
+          }
+      
+  }
+
+  return jsonformat;
 
 }
 
 function mostraProdutos(){
-  console.log(JSON.stringify(json_produtos));
+
+
+  
+   console.log(JSON.stringify(formataJson()));
+
 }
+
 function enviarJson(){
 
 const myHeaders = new Headers();
@@ -71,6 +111,28 @@ fetch("http://localhost:4000/notifica", requestOptions)
   .then((result) => console.log(result))
   .catch((error) => console.error(error));
 }
+
+
+function enviarJsonCriado(){
+
+  const myHeaders = new Headers();
+  
+  myHeaders.append("Content-Type", "application/json");
+  
+  const raw = JSON.stringify(formataJson());
+  
+  const requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: raw,
+    redirect: "follow"
+  };
+  
+  fetch("http://localhost:4000/notifica", requestOptions)
+    .then((response) => response.text())
+    .then((result) => console.log(result))
+    .catch((error) => console.error(error));
+  }
 
 
 // função assincrona que utiliza de outras duas funções 
@@ -128,57 +190,3 @@ async function geraJsonPanfleto (){
     .catch((error) => console.error(error));
   }
 
-
-
-/*function enviarJsoncomDir(){
-
-  const myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
-
-  const raw = JSON.stringify({
-    "diretorio": file.path
-  })
-
-  const requestOptions ={
-    method: "POST",
-    headers: myHeaders,
-    body: raw,
-    redirect: "follow"
-  }
-
-  fetch("http://localhost:4000/notifica/panfleto",requestOptions)
-  .then((response) => response.text())
-  .then((result) => console.log(result))
-  .catch((error) => console.error(error));
-
-}*/
-
-/*function geraJson(){
-  try {
-
-    const myHeaders = new Headers()
-    myHeaders.append("Content-Type", "application/json")
-    
-  
-    const requestOptions ={
-      method:"POST",
-      headers: myHeaders,
-      body:"",
-      redirect: "follow"  
-    }
-  
-    fetch("http://localhost:4000/notifica/criaJson", requestOptions)
-    .then((response) => response.text())
-    .then((result) => {
-      jsonRetorno = result;
-      console.log(result)
-    })
-    .catch((error => console.error(error)))
-    
-    return jsonRetorno;
-    
-  } catch (error) {
-    console.log(error)
-  }
-
-}*/
