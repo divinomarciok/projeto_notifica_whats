@@ -1,9 +1,13 @@
-const express = require ('express')
+import express from 'express';
 const router = express.Router()
 
-const notificaControl = require ('../controllers/notificaControllers')
-require('../db.js')
-const upload = require ('../config/multer.js')
+import notificaControl from '../controllers/notificaControllers.js';
+
+//import client from '../db.js';
+//require('../db.js')
+//client.main()
+
+import upload from '../config/multer.js';
 
 
 router.post('/',notificaControl.adiciona);
@@ -17,4 +21,4 @@ router.post('/criaJson',notificaControl.cria)
 
 
 
-module.exports=router;  
+export default router;  

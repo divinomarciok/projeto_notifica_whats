@@ -1,3 +1,8 @@
+import selecionaProdutos from './teste/scriptTest.js';
+
+
+botaoEnviarJson.addEventListener('click', enviarJsonCriado);
+botaoMostraProdutos.addEventListener('click', mostraProdutos);
 
 
 const json_produtos = [];
@@ -57,34 +62,31 @@ function criaJsonT() {
       document.getElementById('tamanho').value='';
     }
 
-function formataJson(){
+function formataJson(array){
 
-  //transformaEmjson = JSON.stringify(json_produtos);
+  //array = selecionaProdutos;
 
     const jsonformat = {
-      json: 
-          {
-              //_id:"Sem id ainda",
-              empresa: nomeEmpresa.value,
-              data: dataCadastro.value,            
-              produtos: [
-        
-                json_produtos
-           
-              ]
-          }
-      
-  }
+      json: [
+        {
+          empresa:"Empresa de Teste",
+          data: "16/08/2024",           
+          produtos:         
+          array
+        }]          
+          //_id:"Sem id ainda",         
+    }
 
-  return jsonformat;
+  return JSON.stringify(jsonformat);
 
 }
 
-function mostraProdutos(){
+function mostraProdutos(array){
+ 
+  array = selecionaProdutos(10);
 
-
-  
-   console.log(JSON.stringify(formataJson()));
+  let formatado = formataJson(array)
+  console.log(formatado);
 
 }
 
@@ -118,8 +120,11 @@ function enviarJsonCriado(){
   const myHeaders = new Headers();
   
   myHeaders.append("Content-Type", "application/json");
-  
-  const raw = JSON.stringify(formataJson());
+
+  let array = selecionaProdutos(20);
+  console.log(array);
+
+  const raw = formataJson(array);
   
   const requestOptions = {
     method: "POST",

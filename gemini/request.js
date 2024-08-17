@@ -7,12 +7,12 @@
  * https://ai.google.dev/gemini-api/docs/get-started/node
  */
 
-const {
+import {
     GoogleGenerativeAI,
     HarmCategory,
     HarmBlockThreshold,
-  } = require("@google/generative-ai");
-  const { GoogleAIFileManager } = require("@google/generative-ai/server");
+  } from '@google/generative-ai';
+  import { GoogleAIFileManager } from '@google/generative-ai/server';
   
   const apiKey = "AIzaSyAf_zdD7hIYJilZX8K6WkRY1UYjexdF3DE";
   const genAI = new GoogleGenerativeAI(apiKey);
@@ -45,7 +45,7 @@ const {
     responseMimeType: "text/plain",
   };
   
-  async function run(nomeArq) {
+  export async function run(nomeArq) {
     // TODO Make these files available on the local file system
     // You may need to update the file paths
     const files = [
@@ -86,6 +86,6 @@ const {
   
   //run();
 
-  module.exports={
+  /*module.exports={
     run
-  }
+  }*/

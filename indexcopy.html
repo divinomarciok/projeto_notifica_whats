@@ -6,7 +6,7 @@
     <title>cria json tabacaria</title>
 </head>
 <body>
-    <script src="scripts.js"></script>
+    <script type="module" src="scripts.js"> </script>
     <div>
         <input type="text" placeholder="nome empresa" name="Nome da Empresa" id="nomeEmpresa">
         <input type="text" placeholder="data cadastro" name="Data Cadastro" id="dataCadastro"><br><br>
@@ -26,15 +26,13 @@
     <input type="text" placeholder="tamanho produto" name="tamanho" id="tamanho"><br>    <br>
 
 
-    <!-- <input type="file" placeholder="arquivo" name="file" id="file"><br> -->
 
-    <button onclick="criaJsonT()">Monta JSON</button>
+  <button id="botaoCriaJson">Monta JSON</button>
+  <button id="botaoMostraProdutos">Mostra JSON</button><br><br>
+  <button id="botaoEnviarJson">Enviar JSON</button><br>
+  <button id="botaoGeraJsonAleatorio">Gera JSON Aleatorio</button>
 
-    <button onclick="mostraProdutos()">Mostra JSON</button><br><br>
-
-    <button onclick="enviarJsonCriado()">Enviar JSON</button><br>
-    <button onclick="">Gera JSON Aleatorio</button>
-
+  
     
 </div>
 </body>

@@ -1,23 +1,35 @@
-const express = require('express')
-const cors = require ('cors')
+//configurações para obter o arquivo do diretorio
+
+import path from 'path';
+
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+import express from 'express'
 const app = express()
 
-require('dotenv').config()
+import dotenv from 'dotenv';
+dotenv.config()
 
-const notificaRouters = require ("./routes/notificaRoutes.js")
-upload = require('./config/multer.js')
+import notificaRouters from "./routes/notificaRoutes.js";
 
-const port = process.env.PORT || 3000;
+import { env } from 'process';
+
+//import process from 'dotenv';
+//import upload from './config/multer.js'
+
+
+const port = env.PORT || 3000;
 
 app.use(express.json())
 
 app.use(express.static(__dirname))
 
+app.use('/notifica', notificaRouters)
 
-app.use('/notifica',notificaRouters)
-
-app.listen(port,()=>{
-    console.log('O servidor esta rodando na URL http://localhost:'+port);
+app.listen(port, () => {
+    console.log('O servidor esta rodando na URL http://localhost:' + port);
 })
 
 

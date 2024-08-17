@@ -3,9 +3,8 @@ function getRandomInt(max) {
 }
 function getRandomFloat(min, max) {
 
-    randomfloat = Math.random() * (max - min) + min;
-
-    return console.log(randomfloat.toFixed(2));
+    let randomfloat = Math.random() * (max - min) + min;
+    return randomfloat.toFixed(2);
 
 }
 
@@ -107,7 +106,7 @@ const produtos = [
 
 
 
-function selecionaProdutos(quantidade) {
+export function selecionaProdutos(quantidade) {
 
     //let contador = 0 ;
     let arrayProdutos = [];
@@ -120,7 +119,7 @@ function selecionaProdutos(quantidade) {
 
             Nome: nomeCompleto.split(' ')[0],
             Valor: getRandomFloat(5, 20),
-            Marca: nomeCompleto.split(' ')[0],
+            Marca: nomeCompleto.split(' ')[1],
             Categoria: selecionaCategoria(nomeCompleto.split(' ')[0]),
                        
         }
@@ -195,7 +194,7 @@ function selecionaCategoria(palavra) {
     }
 }
 
-
+export default selecionaProdutos;
 //testando(40);
 
 //getRandomFloat(50,100);
