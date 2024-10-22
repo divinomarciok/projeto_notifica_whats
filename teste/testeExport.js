@@ -95,9 +95,9 @@ async function selecionaCategoria(quantidade){
     
             const produtosTabacaria = {
     
-                Nome: nomeCompleto.split(' ')[0],
+                Nome: nomeCompleto,
                 Valor: getRandomFloat(5, 20),
-                Marca: nomeCompleto.split(' ')[0],
+                Marca: nomeCompleto.split(' ')[1],
                 Categoria: selecionaCategoria(nomeCompleto.split(' ')[0]),
     
             }

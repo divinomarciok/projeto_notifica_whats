@@ -117,7 +117,7 @@ export function selecionaProdutos(quantidade) {
 
         const produtosTabacaria = {
 
-            Nome: nomeCompleto.split(' ')[0],
+            Nome: nomeCompleto,
             Valor: getRandomFloat(5, 20),
             Marca: nomeCompleto.split(' ')[1],
             Categoria: selecionaCategoria(nomeCompleto.split(' ')[0]),
@@ -161,7 +161,7 @@ function testando(tamanho) {
     }
 }
 
-function selecionaCategoria(palavra) {
+export function selecionaCategoria(palavra) {
 
     if (palavra == 'Seda') {
         return 0;
